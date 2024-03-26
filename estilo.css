@@ -1,0 +1,232 @@
+body {
+  background-color: #0b2545;
+  color: #ebf2fa;
+  font-family: "Poppins", sans-serif;
+  padding: 50px 0;
+}
+
+.wrapper {
+  display: flex;
+  gap: 25px;
+}
+
+.side {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.btn-secondary {
+  width: fit-content;
+}
+
+.btn-primary {
+  background-color: #679436;
+  border: 1px solid #679436;
+  color: #ebf2fa;
+  margin-top: 25px;
+  transition: 1s all ease;
+}
+
+.modal .btn-primary,
+.modal .btn-secondary {
+  margin-top: 0;
+}
+
+.btn-primary:hover {
+  background-color: #a5be00;
+  border: 1px solid #a5be00;
+  color: #ebf2fa;
+}
+
+.form-control {
+  border: 1px solid #427aa1;
+  color: #0b2545 !important;
+}
+
+.search-wrapper {
+  align-items: center;
+  display: flex;
+  gap: 25px;
+  justify-content: space-between;
+}
+
+/* .info-wrapper,
+.check-wrapper {
+  flex: 1;
+} */
+
+.check-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.result {
+  color: white;
+  font-size: 110%;
+  font-weight: bolder;
+  font-weight: 700;
+}
+
+.check {
+  height: 18px;
+  width: 18px;
+}
+
+.modal {
+  color: #0b2545;
+}
+
+.partida-wrapper {
+  display: flex;
+  gap: 15px;
+}
+
+.partida-wrapper p {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.partida-wrapper input {
+  flex: 1;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-body .form-control {
+  height: 35px;
+}
+
+.modal-header button {
+  background-color: transparent;
+  border: transparent;
+  font-size: 20px;
+}
+
+.modal-footer .side {
+  gap: 0;
+}
+
+.buttons-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 15px !important;
+  justify-content: center;
+}
+
+p {
+  font-weight: 300;
+}
+
+.modal-footer p {
+  color: #0b2545;
+  font-weight: 500;
+}
+
+.modal-dialog {
+  max-width: 800px;
+}
+
+.wrapper-impresion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+.wrapper-impresion .title {
+  font-size: 32px;
+  text-align: center;
+}
+
+.wrapper-impresion .row {
+  width: 100%;
+  font-weight: 500;
+}
+
+.wrapper-impresion .subtitle {
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+.wrapper-impresion .categoria-servicio,
+.wrapper-impresion .texto-servicio,
+.wrapper-impresion .precio {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.wrapper-impresion .texto-servicio {
+  padding-left: 30px;
+}
+
+.wrapper-impresion .elemento-wrapper {
+  display: flex;
+}
+
+.hr-impresion {
+  border-bottom: 1px solid black;
+  opacity: 1;
+  margin: 25px 0;
+}
+
+.iva-wrapper {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.elemento-iva-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+@media (max-width: 767.98px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  body {
+    padding: 30px 0;
+  }
+}
+
+.nombreDeCotizacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.nombreDeCotizacion .btn-primary {
+  margin-top: 0;
+}
+
+.categoria-modal-wrapper {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.categoria-modal-wrapper input {
+  width: 100px;
+  max-width: 100%;
+}
+
+.input-sm {
+  width: 15%;
+  flex: none !important;
+}
