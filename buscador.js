@@ -466,10 +466,17 @@ function actualizarCantidad(nombreServicio, nuevoCantidad) {
   }
 }
 
+let siguienteId = 1;
 // Agregar nuevo servicio desde el formulario
 $("#agregarNuevoServicioBtn").click(function () {
   let nuevoServicioTitulo = $("#nuevoServicioTitulo").val();
   let nuevoServicioNombre = $("#nuevoServicioNombre").val();
+
+  // Verificar si el servicio ya existe en la lista de productos seleccionados
+  if (productosSeleccionados.some((p) => p.servicio === nuevoServicioNombre)) {
+    alert("¡El servicio ya existe!");
+    return; // Salir de la función si ya existe el servicio
+  }
 
   if (nuevoServicioTitulo && nuevoServicioNombre) {
     // Crear un nuevo producto con título y nombre proporcionados
@@ -477,8 +484,11 @@ $("#agregarNuevoServicioBtn").click(function () {
       categoria: nuevoServicioTitulo,
       servicio: nuevoServicioNombre,
       precio: 0,
-      cantidad: 1, // Puedes establecer un valor predeterminado o dejarlo en 0
+      cantidad: 1,
+      id: siguienteId, // Asignar el ID incremental
     };
+
+    siguienteId++; // Incrementar el ID para el próximo servicio
 
     // Agregar el nuevo producto a la lista de productos seleccionados
     productosSeleccionados.push(nuevoProducto);
@@ -487,7 +497,6 @@ $("#agregarNuevoServicioBtn").click(function () {
     actualizarModalBody();
 
     // Limpiar los campos del formulario
-    //$("#nuevoServicioTitulo").val("");
     $("#nuevoServicioNombre").val("");
   }
 });
