@@ -375,36 +375,43 @@ function quitarProducto(nombreServicio) {
 }
 
 function actualizarModalBody() {
-  let modalBody = $("#modalBody");
-  modalBody.html("");
+ let modalBody = $("#modalBody");
+ let numeroTituloValues = {}; // Objeto para almacenar los valores de numeroTitulo
 
-  let productosAgrupados = agruparProductosPorCategoria();
-  let totalAntesIva = 0;
+ // Almacenar los valores actuales de numeroTitulo
+ $(".numeroTitulo").each(function () {
+   let titulo = $(this).data("titulo");
+   let numeroTitulo = $(this).val();
+   numeroTituloValues[titulo] = numeroTitulo;
+ });
 
-  for (let titulo in productosAgrupados) {
-    modalBody.append(`<div class="categoria-modal-wrapper">
+ modalBody.html("");
+
+ let productosAgrupados = agruparProductosPorCategoria();
+ let totalAntesIva = 0;
+
+ for (let titulo in productosAgrupados) {
+   modalBody.append(`<div class="categoria-modal-wrapper">
       <h5>${titulo}</h5> <input class="form-control numeroTitulo" type="text" data-titulo="${titulo}" placeholder="Número de título"> </input>
     </div>`);
-    productosAgrupados[titulo].forEach((producto) => {
-      // Multiplicar cantidad por precio para obtener el precio total del producto
-      let precioTotal = producto.precio * producto.cantidad;
-      totalAntesIva += precioTotal;
-      modalBody.append(`
+
+   // Restaurar los valores de numeroTitulo
+   $(`.numeroTitulo[data-titulo="${titulo}"]`).val(numeroTituloValues[titulo]);
+
+   productosAgrupados[titulo].forEach((producto) => {
+     // Multiplicar cantidad por precio para obtener el precio total del producto
+     let precioTotal = producto.precio * producto.cantidad;
+     totalAntesIva += precioTotal;
+     modalBody.append(`
         <div class="partida-wrapper">
           <input class="form-control input-sm" value="${
             producto.cantidad
           }" type="number" 
-            onchange="actualizarCantidad('${
-              producto.servicio
-            }', this.value)">
+            onchange="actualizarCantidad('${producto.servicio}', this.value)">
           </input>
-          <input class="form-control" value="${
-            producto.servicio
-          }" disabled>
+          <input class="form-control" value="${producto.servicio}" disabled>
           <input class="form-control" type="number" value="${producto.precio}" 
-            onchange="actualizarPrecio('${
-              producto.servicio
-            }', this.value)">
+            onchange="actualizarPrecio('${producto.servicio}', this.value)">
           </input>
           <input class="form-control" type="text" value="${precioTotal.toFixed(
             2
@@ -415,9 +422,9 @@ function actualizarModalBody() {
           }">Eliminar</button>
         </div>
       `);
-    });
-    modalBody.append("<hr>");
-  }
+   });
+   modalBody.append("<hr>");
+ }
 
   // Asociar la función de eliminar a los botones de eliminar partida
   $(".eliminar-partida").click(function () {
